@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug import secure_filename
+from network import Network
 
 UPLOAD_FOLDER = 'user_data/'
 ALLOWED_EXTENSIONS = set(['csv'])
@@ -20,8 +21,10 @@ def test_data():
 		file = request.files['csvfile']
 		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			return 'file uploaded'
+			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+			file.save(filepath)
+			n = Network(filepath)
+			return str(n.compute())
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=True)
