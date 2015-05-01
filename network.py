@@ -3,7 +3,7 @@ import numpy
 
 class Network:
 	def __init__(self, filename):
-		self.graph = igraph.Graph.Read_Adjacency(filename, mode='UNDIRECTED')
+		self.graph = igraph.Graph.Read_Adjacency(filename, sep=',', mode='UNDIRECTED')
 
 	def median_degree(self):
 		degrees = self.graph.degree()

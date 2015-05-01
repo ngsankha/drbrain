@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug import secure_filename
-from network import Network
+from classifier import Classifier
 
 UPLOAD_FOLDER = 'user_data/'
 ALLOWED_EXTENSIONS = set(['csv'])
@@ -23,8 +23,8 @@ def test_data():
 			filename = secure_filename(file.filename)
 			filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
 			file.save(filepath)
-			n = Network(filepath)
-			return str(n.compute())
+			clf = Classifier(filepath)
+			return str([clf.test1(), clf.test2(), clf.test3()])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
