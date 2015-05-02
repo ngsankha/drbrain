@@ -1,8 +1,26 @@
 import igraph
 import numpy
+import csv
 
 class Network:
 	def __init__(self, filename):
+		adj_mat = []
+		with open(filename, 'rb') as f:
+			reader = csv.reader(f)
+			transformed_row = []
+			for row in reader:
+				for item in row:
+					if float(item) == 0:
+						transformed_row += [0]
+					else:
+						transformed_row += [1]
+				adj_mat += [transformed_row]
+				transformed_row = []
+		#print len(adj_mat), len(adj_mat[0])
+		with open(filename, 'w') as f:
+			csvwriter = csv.writer(f, delimiter=',')
+			for row in adj_mat:
+				csvwriter.writerow(row)
 		self.graph = igraph.Graph.Read_Adjacency(filename, sep=',', mode='UNDIRECTED')
 
 	def median_degree(self):

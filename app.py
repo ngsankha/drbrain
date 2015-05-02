@@ -27,11 +27,11 @@ def diagnosis_result(filepath):
 		template_obj['star' + str(i)] = 'glyphicon-star'
 	for i in range(total, 3):
 		template_obj['star' + str(i)] = 'glyphicon-star-empty'
-	template_obj['transitivity'] = clf.features[3]
-	template_obj['efficiency'] = clf.features[2]
-	template_obj['closeness'] = clf.features[5]
-	template_obj['opt_modularity'] = clf.features[4]
-	template_obj['assortativity'] = clf.features[1]
+	template_obj['transitivity'] = '%.3f' % clf.features[3]
+	template_obj['efficiency'] = '%.3f' % clf.features[2]
+	template_obj['closeness'] = '%.3f' % clf.features[5]
+	template_obj['opt_modularity'] = '%.3f' % clf.features[4]
+	template_obj['assortativity'] = '%.3f' % clf.features[1]
 
 	v = Visualizer(filepath)
 	transformed_G = v.transform_adjmat()
