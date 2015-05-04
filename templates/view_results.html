@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+        <h3>Overview</h3>
+        <table class="table">
+          <tr>
+            <td>Subjects</td>
+            <td>148</td>
+          </tr>
+          <tr>
+            <td>Patients</td>
+            <td>72</td>
+          </tr>
+          <tr>
+            <td>Controls</td>
+            <td>76</td>
+          </tr>
+        </table>
+
+        <h3>Methodologies</h3>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Classifiers</th>
+              <th>No. of Features</th>
+              <th>Features</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Support Vector Machine</td>
+              <td>3</td>
+              <td>Transitivity, Global Efficiency, Median Degree</td>
+              <td>65.77%</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Support Vector Machine</td>
+              <td>3</td>
+              <td>Closeness Centrality, Optimal Modularity, Assortativity</td>
+              <td>66.31%</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Support Vector Machine</td>
+              <td>2</td>
+              <td>Closeness Centrality Variance, Optimal Modularity</td>
+              <td>64.96%</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>Support Vector Machine</td>
+              <td>3</td>
+              <td>Weak Ties, Closeness Centrality, Transitivity</td>
+              <td>64.75%</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>K Nearest Neighbours</td>
+              <td>3</td>
+              <td>Characteristic Path Length, Node Betweenness Centrality, Mean Edge Betweenness Centrality</td>
+              <td>63.81%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <img src="/static/images/graph.png" class="img-responsive center-block">
+
+        <div id="push"></div>
+{% endblock %}

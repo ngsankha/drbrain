@@ -43,6 +43,10 @@ def diagnosis_result(filepath):
 def home():
     return render_template('index.html')
 
+@app.route('/results')
+def view_results():
+    return render_template('view_results.html')
+
 @app.route('/test', methods=['POST'])
 def test_data():
 	if request.method == 'POST':
