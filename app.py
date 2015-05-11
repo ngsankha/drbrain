@@ -21,8 +21,7 @@ def diagnosis_result(filepath):
 	if total == 0:
 		template_obj['diagnosis_text'] = 'Congratulations! Subject is not diagnosed with Schizophrenia.'
 	else:
-		frac = float(total) / float(len(results)) * 100
-		template_obj['diagnosis_text'] = 'Subject has been diagnosed with Schizophrenia with a confidence of ' + '%.2f' % frac + '%.'
+		template_obj['diagnosis_text'] = 'Subject has been diagnosed with Schizophrenia in ' + str(total) + ' out of 3 classifiers.'
 	for i in range(total):
 		template_obj['star' + str(i)] = 'glyphicon-star'
 	for i in range(total, 3):
@@ -66,4 +65,4 @@ def fetch_json(uniq_id):
 		return data
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=80)
